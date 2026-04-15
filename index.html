@@ -128,7 +128,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
     <div class="toggle-row">
       <input type="checkbox" id="show-rule3" />
-      <label for="show-rule3">모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함 X</label>
+      <label for="show-rule3">모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함X</label>
     </div>
   </div>
 
@@ -368,7 +368,7 @@ function calculate(){
   const checkedRules=[
     {id:'show-rule',text:'주류비 포함, 모든 금액은 1/N으로 계산됩니다.'},
     {id:'show-rule2',text:'정산은 벙주 재량으로, 금액을 빼달라고 요구할 수 없습니다.'},
-    {id:'show-rule3',text:'모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함 X'}
+    {id:'show-rule3',text:'모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함X'}
   ].filter(r=>document.getElementById(r.id).checked);
   const ruleResultEl=document.getElementById('rule-result');
   if(checkedRules.length>0){
@@ -406,7 +406,7 @@ function copyResult(){
   const ruleTexts=[
     {id:'show-rule',text:'주류비 포함, 모든 금액은 1/N으로 계산됩니다.'},
     {id:'show-rule2',text:'정산은 벙주 재량으로, 금액을 빼달라고 요구할 수 없습니다.'},
-    {id:'show-rule3',text:'모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함 X'}
+    {id:'show-rule3',text:'모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함X'}
   ].filter(r=>document.getElementById(r.id).checked).map(r=>r.text);
   if(ruleTexts.length>0) text+=`\n[안내]\n${ruleTexts.join('\n')}\n`;
   text+=`\n[태그]\n${state.members.map(m=>`@${m.name}`).join('\n')}\n`;

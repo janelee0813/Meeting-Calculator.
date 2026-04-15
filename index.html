@@ -164,9 +164,22 @@ document.getElementById('host-name').addEventListener('input', function(){
   syncHostToMembers();
   renderMemberChips();
 });
-document.getElementById('member-input').addEventListener('keyup', function(e){
-  if(e.key==='Enter') addMember();
-});
+(function(){
+  const inp = document.getElementById('member-input');
+  let composing = false;
+  let pendingAdd = false;
+  inp.addEventListener('compositionstart', function(){ composing = true; });
+  inp.addEventListener('compositionend', function(){
+    composing = false;
+    if(pendingAdd){ pendingAdd = false; addMember(); }
+  });
+  inp.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      if(composing || e.isComposing || e.keyCode === 229){ pendingAdd = true; }
+      else { e.preventDefault(); addMember(); }
+    }
+  });
+})();
 document.getElementById('bung-name').addEventListener('input', function(){
   state.bungName = this.value.trim();
 });

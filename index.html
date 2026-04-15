@@ -409,7 +409,7 @@ function copyResult(){
     {id:'show-rule3',text:'모임에 협의없이 개인적으로 구매해 온 음식, 간식은 정산에 포함되지 않습니다.'}
   ].filter(r=>document.getElementById(r.id).checked).map(r=>r.text);
   if(ruleTexts.length>0) text+=`\n[안내]\n${ruleTexts.join('\n')}\n`;
-  text+=`\n[태그]\n${state.members.map(m=>`@${m.name}`).join(' ')}\n`;
+  text+=`\n[태그]\n${state.members.map(m=>`@${m.name}`).join('\n')}\n`;
   navigator.clipboard.writeText(text).then(()=>{
     const toast=document.getElementById('copy-toast');
     toast.style.display='block';

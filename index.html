@@ -65,10 +65,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 
   <div class="card">
-    <div class="card-title">벙 기본 정보</div>
+    <div class="card-title">모임 기본 정보</div>
     <div class="field">
       <label>모임명</label>
-      <input type="text" id="bung-name" placeholder="예) 역삼 금요벙" />
+      <input type="text" id="bung-name" placeholder="예) 강남역에서 소고기 먹어요" />
     </div>
     <div class="field">
       <label>모임장 이름</label>
@@ -91,7 +91,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 
   <div id="rounds-section">
-    <div style="padding:0 4px 8px;font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:0.8px">차수별 정산</div>
+    <div style="padding:0 4px 8px;font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:0.8px">비용 정산</div>
     <div id="rounds-list"></div>
     <button class="section-add" onclick="addRound()">+ 차수 추가</button>
   </div>
@@ -120,11 +120,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="card-title">정산시 안내하고 싶은 사항에 체크</div>
     <div class="toggle-row">
       <input type="checkbox" id="show-rule" />
-      <label for="show-rule">주류비 포함, 모든 금액은 1/N으로 계산됩니다.</label>
+      <label for="show-rule">모든 금액은 1/N로 계산됩니다.</label>
     </div>
     <div class="toggle-row">
       <input type="checkbox" id="show-rule2" />
-      <label for="show-rule2">정산은 벙주 재량으로, 금액을 빼달라고 요구할 수 없습니다.</label>
+      <label for="show-rule2">정산은 모임장의 재량으로 진행됩니다.</label>
     </div>
     <div class="toggle-row">
       <input type="checkbox" id="show-rule3" />
@@ -149,7 +149,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div id="payment-result"></div>
     </div>
     <div id="rule-result" style="display:none" class="card">
-      <div class="info-text">안내: 주류비 포함, 모든 금액은 1/N으로 계산됩니다.</div>
+      <div class="info-text">안내: 모든 금액은 1/N로 계산됩니다.</div>
     </div>
     <button class="btn btn-full" onclick="copyResult()" style="margin-top:8px">결과 복사하기</button>
     <div id="copy-toast" class="copy-toast">복사 완료!</div>
@@ -366,8 +366,8 @@ function calculate(){
   payHTML+=`<div class="summary-row"><span>카카오페이</span><span>송금 ${kakao?'가능':'불가'}</span></div>`;
   document.getElementById('payment-result').innerHTML=payHTML;
   const checkedRules=[
-    {id:'show-rule',text:'주류비 포함, 모든 금액은 1/N으로 계산됩니다.'},
-    {id:'show-rule2',text:'정산은 벙주 재량으로, 금액을 빼달라고 요구할 수 없습니다.'},
+    {id:'show-rule',text:'모든 금액은 1/N로 계산됩니다.'},
+    {id:'show-rule2',text:'정산은 모임장의 재량으로 진행됩니다.'},
     {id:'show-rule3',text:'모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함X'}
   ].filter(r=>document.getElementById(r.id).checked);
   const ruleResultEl=document.getElementById('rule-result');
@@ -404,8 +404,8 @@ function copyResult(){
   if(bank||acc||holder) text+=`계좌입금: ${[bank,acc,holder].filter(Boolean).join(' ')}\n`;
   text+=`카카오페이 송금 ${kakao?'가능':'불가'}\n`;
   const ruleTexts=[
-    {id:'show-rule',text:'주류비 포함, 모든 금액은 1/N으로 계산됩니다.'},
-    {id:'show-rule2',text:'정산은 벙주 재량으로, 금액을 빼달라고 요구할 수 없습니다.'},
+    {id:'show-rule',text:'모든 금액은 1/N로 계산됩니다.'},
+    {id:'show-rule2',text:'정산은 모임장의 재량으로 진행됩니다.'},
     {id:'show-rule3',text:'모임에 협의없이 개인적으로 구매해 온 음식은 정산에 포함X'}
   ].filter(r=>document.getElementById(r.id).checked).map(r=>r.text);
   if(ruleTexts.length>0) text+=`\n[안내]\n${ruleTexts.join('\n')}\n`;

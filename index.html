@@ -164,7 +164,7 @@ document.getElementById('host-name').addEventListener('input', function(){
   syncHostToMembers();
   renderMemberChips();
 });
-document.getElementById('member-input').addEventListener('keydown', function(e){
+document.getElementById('member-input').addEventListener('keyup', function(e){
   if(e.key==='Enter') addMember();
 });
 document.getElementById('bung-name').addEventListener('input', function(){

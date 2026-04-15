@@ -67,19 +67,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="card">
     <div class="card-title">벙 기본 정보</div>
     <div class="field">
-      <label>벙명</label>
+      <label>모임명</label>
       <input type="text" id="bung-name" placeholder="예) 역삼 금요벙" />
     </div>
     <div class="field">
-      <label>벙주 이름</label>
-      <input type="text" id="host-name" placeholder="벙주 이름 입력" />
+      <label>모임장 이름</label>
+      <input type="text" id="host-name" placeholder="모임장 이름 입력" />
     </div>
   </div>
 
   <div class="card">
     <div class="card-title">참여 멤버</div>
     <div class="field">
-      <label>멤버 추가 (벙주는 자동 포함)</label>
+      <label>멤버 추가 (모임장은 자동 포함)</label>
       <div class="row">
         <input type="text" id="member-input" placeholder="이름 입력 후 추가" />
         <button class="btn btn-sm" onclick="addMember()">추가</button>
@@ -87,7 +87,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div id="member-warn" class="warn" style="display:none"></div>
     </div>
     <div class="chips-wrap" id="member-chips">
-      <div style="color:#bbb;font-size:13px;padding:4px 0">벙주 이름을 먼저 입력하세요</div>
     </div>
   </div>
 
@@ -125,6 +124,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 
   <button class="btn btn-primary btn-full" onclick="calculate()">정산 계산하기</button>
+  <div style="text-align:right;font-size:11px;color:#aaa;margin-top:6px">만든이 : 제인</div>
 
   <div id="result-section" style="display:none;margin-top:16px">
     <div class="card">
